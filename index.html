@@ -95,9 +95,21 @@
     <div class="article-content">
         
         <h4 id="根据歌曲相似度来查找用户并保存试听歌曲至Redis中">根据歌曲相似度来查找用户并保存试听歌曲至Redis中</h4><h5 id="利用pyhton的urllib库进行简单的内容爬起并存储">利用pyhton的urllib库进行简单的内容爬起并存储</h5><ul>
-<li><p>代码如下：<br>  -<em>- coding: utf-8 -</em>-</p>
-<p>  import string<br>  import urllib2,cookielib<br>  import urllib<br>  import re<br>  import os,time,random<br>  from bs4 import BeautifulSoup<br>  from selenium import webdriver<br>  from selenium.common.exceptions import NoSuchElementException<br>  import redis<br>  from redis import Redis</p>
-</li>
+<li><p>代码如下：</p>
+<pre><code> -*- coding: utf-<span class="number">8</span> -*-
+__author__ = <span class="comment">'linchen'</span>
+
+<span class="preprocessor"><span class="keyword">import</span> string</span>
+<span class="preprocessor"><span class="keyword">import</span> urllib2,cookielib</span>
+<span class="preprocessor"><span class="keyword">import</span> urllib</span>
+<span class="preprocessor"><span class="keyword">import</span> re</span>
+<span class="preprocessor"><span class="keyword">import</span> os,time,random</span>
+from bs4 <span class="preprocessor"><span class="keyword">import</span> BeautifulSoup</span>
+from selenium <span class="preprocessor"><span class="keyword">import</span> webdriver</span>
+from selenium.common.exceptions <span class="preprocessor"><span class="keyword">import</span> NoSuchElementException</span>
+<span class="preprocessor"><span class="keyword">import</span> redis</span>
+from redis <span class="preprocessor"><span class="keyword">import</span> Redis</span>
+</code></pre></li>
 </ul>
 <pre><code><span class="class"><span class="keyword">class</span> <span class="title">xiami_spider</span>:</span>
     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,url)</span>:</span>
@@ -106,12 +118,12 @@
         self.datas=[]
         self.similar=<span class="string">'http://www.xiami.com/space/similar/u/7611119,'</span>+url
         post={<span class="string">'email'</span>:<span class="string">'421894141@qq.com'</span>,
-            <span class="string">'password'</span>:<span class="string">'lx890504'</span>,
-            <span class="string">'submit'</span>:<span class="string">'%E7%99%BB+%E5%BD%95'</span>,
-            <span class="string">'from'</span>:<span class="string">'web'</span>,
-            <span class="string">'havanaId'</span>:<span class="string">''</span>,
-            <span class="string">'done'</span>:<span class="string">'http%253A%252F%252Fwww.xiami.com'</span>,
-            <span class="string">'_xiamitoken'</span>:<span class="string">'b45a71ba7c9ca6dfacf61314cd836c58'</span>}
+              <span class="string">'password'</span>:<span class="string">'lx890504'</span>,
+              <span class="string">'submit'</span>:<span class="string">'%E7%99%BB+%E5%BD%95'</span>,
+              <span class="string">'from'</span>:<span class="string">'web'</span>,
+              <span class="string">'havanaId'</span>:<span class="string">''</span>,
+              <span class="string">'done'</span>:<span class="string">'http%253A%252F%252Fwww.xiami.com'</span>,
+              <span class="string">'_xiamitoken'</span>:<span class="string">'b45a71ba7c9ca6dfacf61314cd836c58'</span>}
         self.postdata = urllib.urlencode(post)
         self.headers = {
             <span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 6.1; rv:40.0) Gecko/20100101 Firefox/40.0'</span>,
@@ -163,12 +175,12 @@
             <span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 6.1; rv:40.0) Gecko/20100101 Firefox/40.0'</span>,
             }
         post={<span class="string">'email'</span>:<span class="string">'421894141@qq.com'</span>,
-            <span class="string">'password'</span>:<span class="string">'lx890504'</span>,
-            <span class="string">'submit'</span>:<span class="string">'%E7%99%BB+%E5%BD%95'</span>,
-            <span class="string">'from'</span>:<span class="string">'web'</span>,
-            <span class="string">'havanaId'</span>:<span class="string">''</span>,
-            <span class="string">'done'</span>:<span class="string">'http%253A%252F%252Fwww.xiami.com'</span>,
-            <span class="string">'_xiamitoken'</span>:<span class="string">'b45a71ba7c9ca6dfacf61314cd836c58'</span>}
+              <span class="string">'password'</span>:<span class="string">'lx890504'</span>,
+              <span class="string">'submit'</span>:<span class="string">'%E7%99%BB+%E5%BD%95'</span>,
+              <span class="string">'from'</span>:<span class="string">'web'</span>,
+              <span class="string">'havanaId'</span>:<span class="string">''</span>,
+              <span class="string">'done'</span>:<span class="string">'http%253A%252F%252Fwww.xiami.com'</span>,
+              <span class="string">'_xiamitoken'</span>:<span class="string">'b45a71ba7c9ca6dfacf61314cd836c58'</span>}
         postdata = urllib.urlencode(post)
         req = urllib2.Request(
         url = <span class="string">'https://login.xiami.com/member/login'</span>,
@@ -224,6 +236,10 @@
             <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">0</span>,len(sum_art)):
                 r.hmset(<span class="string">'song%d'</span>% db_num,{<span class="string">'name'</span>:<span class="string">'%s'</span>% sum_song[k],<span class="string">'hot'</span>:<span class="string">'%s'</span>% sum_hot[k],<span class="string">'art'</span>:<span class="string">'%s'</span>% sum_art[k]})
 
+            <span class="comment">#songlist=r.keys('song*')</span>
+
+            <span class="comment">#for mu in songlist:</span>
+                <span class="comment">#print r.hget(mu,'name')</span>
 redis_global=redis.Redis(host=<span class="string">'localhost'</span>,port=<span class="number">6379</span>,db=<span class="number">0</span>)
 <span class="keyword">print</span> <span class="string">'用户号:'</span>
 userid=str(raw_input())
@@ -235,8 +251,82 @@ db_num=<span class="number">0</span>
     myspider.justSoupIt(UserInfo,db_num)
     db_num=len(redis_global.keys(<span class="string">'song*'</span>))
     userid=str(int(userid)+random.randint(<span class="number">1</span>,<span class="number">100</span>))
-</code></pre><p>`</p>
 
+
+
+<span class="string">'''try:
+    headers = {
+    'User-Agent':'Mozilla/5.0 (Windows NT 6.1; rv:40.0) Gecko/20100101 Firefox/40.0',
+    }
+    post={'email':'421894141@qq.com',
+          'password':'lx890504',
+          'submit':'%E7%99%BB+%E5%BD%95',
+          'from':'web',
+          'havanaId':'',
+          'done':'http%253A%252F%252Fwww.xiami.com',
+          '_xiamitoken':'b45a71ba7c9ca6dfacf61314cd836c58'}
+    postdata = urllib.urlencode(post)
+    req = urllib2.Request(
+    url = 'https://login.xiami.com/member/login',
+    data=postdata,
+    headers = headers
+)
+
+    cookie_support=urllib2.HTTPCookieProcessor(cookielib.CookieJar())
+    opener=urllib2.build_opener(cookie_support,urllib2.HTTPHandler)
+    urllib2.install_opener(opener)
+    response = urllib2.urlopen(req)
+    mytest=response.read()
+
+    #print mytest
+
+    userreq =urllib2.Request(myspider.similar,data=postdata,headers=headers)
+    userpage=urllib2.urlopen(userreq)
+    userinfo=userpage.read()
+
+except urllib2.URLError,e:
+    print e.reason
+    soup=BeautifulSoup(userinfo)
+    auditionsimilar=soup.strong.text
+    if auditionsimilar==u'\r\n很高\r\n':
+        print 'Yep'
+        myspider.find_title(userinfo)
+        audition=urllib2.Request(myspider.auditionUrl,data=postdata,headers=headers)
+        auditionpage=urllib2.urlopen(audition)
+        auditioninfo=auditionpage.read()
+
+        sum_song=[]
+        sum_hot=[]
+        sum_art=[]
+        soup_au=BeautifulSoup(auditioninfo)
+        print soup_au.tbody.find_all('a')
+        r=redis.Redis(host='localhost',port=6379,db=0)
+        for song_name in soup_au.tbody.find_all(class_='song_name'):
+            sum_song.append(song_name.a['title'])
+
+        for song in sum_song:
+            print song
+
+        for song_hot in soup_au.tbody.find_all(class_='song_hot'):
+            sum_hot.append(song_hot.string)
+
+        for hot in sum_hot:
+            print hot
+
+        for song_art in soup_au.tbody.find_all(class_='artist_name'):
+            sum_art.append(song_art.string)
+
+        for art in sum_art:
+            print art
+
+        for k in range(0,len(sum_art)):
+            r.hmset('song%d'% k,{'name':'%s'% sum_song[k],'hot':'%s'% sum_hot[k],'art':'%s'% sum_art[k]})
+
+        songlist=r.keys('song*')
+
+        for mu in songlist:
+            print r.hget(mu,'name')'''</span>
+</code></pre>
         
         
         <p class="article-more-link">
