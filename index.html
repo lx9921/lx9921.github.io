@@ -94,9 +94,9 @@
 </header>
     <div class="article-content">
         
-        <h1 id="根据歌曲相似度来查找用户并保存试听歌曲至Redis中">根据歌曲相似度来查找用户并保存试听歌曲至Redis中</h1><h2 id="利用pyhton的urllib库进行简单的内容爬起并存储">利用pyhton的urllib库进行简单的内容爬起并存储</h2><ul>
-<li><p>代码如下：<br>`</p>
-<h1 id="-_coding:_utf-8_-">-<em>- coding: utf-8 -</em>-</h1><p>  import string<br>  import urllib2,cookielib<br>  import urllib<br>  import re<br>  import os,time,random<br>  from bs4 import BeautifulSoup<br>  from selenium import webdriver<br>  from selenium.common.exceptions import NoSuchElementException<br>  import redis<br>  from redis import Redis</p>
+        <h4 id="根据歌曲相似度来查找用户并保存试听歌曲至Redis中">根据歌曲相似度来查找用户并保存试听歌曲至Redis中</h4><h5 id="利用pyhton的urllib库进行简单的内容爬起并存储">利用pyhton的urllib库进行简单的内容爬起并存储</h5><ul>
+<li><p>代码如下：<br>  -<em>- coding: utf-8 -</em>-</p>
+<p>  import string<br>  import urllib2,cookielib<br>  import urllib<br>  import re<br>  import os,time,random<br>  from bs4 import BeautifulSoup<br>  from selenium import webdriver<br>  from selenium.common.exceptions import NoSuchElementException<br>  import redis<br>  from redis import Redis</p>
 </li>
 </ul>
 <pre><code><span class="class"><span class="keyword">class</span> <span class="title">xiami_spider</span>:</span>

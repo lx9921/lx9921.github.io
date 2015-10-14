@@ -12,20 +12,20 @@
 
     
     <meta name="description" content="根据歌曲相似度来查找用户并保存试听歌曲至Redis中利用pyhton的urllib库进行简单的内容爬起并存储
-代码如下：`
--- coding: utf-8 --  import string  import urllib2,cookielib  import urllib  import re  import os,time,random  from bs4 import BeautifulSo">
+代码如下：  -- coding: utf-8 --
+  import string  import urllib2,cookielib  import urllib  import re  import os,time,random  from bs4 import BeautifulS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="虾米爬虫<练手>">
 <meta property="og:url" content="http://maddoglin.com/2015/10/14/dataAnalysis/index.html">
 <meta property="og:site_name" content="Maddog's Cornea">
 <meta property="og:description" content="根据歌曲相似度来查找用户并保存试听歌曲至Redis中利用pyhton的urllib库进行简单的内容爬起并存储
-代码如下：`
--- coding: utf-8 --  import string  import urllib2,cookielib  import urllib  import re  import os,time,random  from bs4 import BeautifulSo">
+代码如下：  -- coding: utf-8 --
+  import string  import urllib2,cookielib  import urllib  import re  import os,time,random  from bs4 import BeautifulS">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虾米爬虫<练手>">
 <meta name="twitter:description" content="根据歌曲相似度来查找用户并保存试听歌曲至Redis中利用pyhton的urllib库进行简单的内容爬起并存储
-代码如下：`
--- coding: utf-8 --  import string  import urllib2,cookielib  import urllib  import re  import os,time,random  from bs4 import BeautifulSo">
+代码如下：  -- coding: utf-8 --
+  import string  import urllib2,cookielib  import urllib  import re  import os,time,random  from bs4 import BeautifulS">
 
     
     <link rel="alternative" href="/atom.xml" title="Maddog&#39;s Cornea" type="application/atom+xml">
@@ -101,13 +101,13 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#根据歌曲相似度来查找用户并保存试听歌曲至Redis中"><span class="toc-number">1.</span> <span class="toc-text">根据歌曲相似度来查找用户并保存试听歌曲至Redis中</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#利用pyhton的urllib库进行简单的内容爬起并存储"><span class="toc-number">1.1.</span> <span class="toc-text">利用pyhton的urllib库进行简单的内容爬起并存储</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#-_coding:_utf-8_-"><span class="toc-number">2.</span> <span class="toc-text">-- coding: utf-8 --</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#根据歌曲相似度来查找用户并保存试听歌曲至Redis中"><span class="toc-number">1.</span> <span class="toc-text">根据歌曲相似度来查找用户并保存试听歌曲至Redis中</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#利用pyhton的urllib库进行简单的内容爬起并存储"><span class="toc-number">1.1.</span> <span class="toc-text">利用pyhton的urllib库进行简单的内容爬起并存储</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="根据歌曲相似度来查找用户并保存试听歌曲至Redis中">根据歌曲相似度来查找用户并保存试听歌曲至Redis中</h1><h2 id="利用pyhton的urllib库进行简单的内容爬起并存储">利用pyhton的urllib库进行简单的内容爬起并存储</h2><ul>
-<li><p>代码如下：<br>`</p>
-<h1 id="-_coding:_utf-8_-">-<em>- coding: utf-8 -</em>-</h1><p>  import string<br>  import urllib2,cookielib<br>  import urllib<br>  import re<br>  import os,time,random<br>  from bs4 import BeautifulSoup<br>  from selenium import webdriver<br>  from selenium.common.exceptions import NoSuchElementException<br>  import redis<br>  from redis import Redis</p>
+		<h4 id="根据歌曲相似度来查找用户并保存试听歌曲至Redis中">根据歌曲相似度来查找用户并保存试听歌曲至Redis中</h4><h5 id="利用pyhton的urllib库进行简单的内容爬起并存储">利用pyhton的urllib库进行简单的内容爬起并存储</h5><ul>
+<li><p>代码如下：<br>  -<em>- coding: utf-8 -</em>-</p>
+<p>  import string<br>  import urllib2,cookielib<br>  import urllib<br>  import re<br>  import os,time,random<br>  from bs4 import BeautifulSoup<br>  from selenium import webdriver<br>  from selenium.common.exceptions import NoSuchElementException<br>  import redis<br>  from redis import Redis</p>
 </li>
 </ul>
 <pre><code><span class="class"><span class="keyword">class</span> <span class="title">xiami_spider</span>:</span>
@@ -315,7 +315,7 @@ var duoshuoQuery = {short_name:"maddog"};
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#根据歌曲相似度来查找用户并保存试听歌曲至Redis中"><span class="toc-number">1.</span> <span class="toc-text">根据歌曲相似度来查找用户并保存试听歌曲至Redis中</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#利用pyhton的urllib库进行简单的内容爬起并存储"><span class="toc-number">1.1.</span> <span class="toc-text">利用pyhton的urllib库进行简单的内容爬起并存储</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#-_coding:_utf-8_-"><span class="toc-number">2.</span> <span class="toc-text">-- coding: utf-8 --</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#根据歌曲相似度来查找用户并保存试听歌曲至Redis中"><span class="toc-number">1.</span> <span class="toc-text">根据歌曲相似度来查找用户并保存试听歌曲至Redis中</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#利用pyhton的urllib库进行简单的内容爬起并存储"><span class="toc-number">1.1.</span> <span class="toc-text">利用pyhton的urllib库进行简单的内容爬起并存储</span></a></li></ol></li></ol>
  
   </div>
 
